@@ -1,84 +1,121 @@
-<div>
-  <h1>Wooly Billy</h1>
-  <h2>Places you can place hair on Wooly Billy:</h2>
+<div class="wrap-not-billy">
+  <div>
+    <h1>Wooly Billy</h1>
+    <h2>Places you can place hair on Wooly Billy:</h2>
 
-  <% @areas.each do |area| %>
+    <% @areas.each do |area| %>
+      <div>
+        <h3><%= area.title %></h3>
+        <span> - <%= area.desc %></span>
+      </div>
+    <% end %>
+
+  </div>
+
+  <!-- New Hairs Form -->
+  <h4><b>CREATE A Hair</b></h4>
+  <%= form_for @hair, url: area_hairs_path(:title, "Head") do |f| %>
+  <div>
+    x-coordinate:
+    <div class="inst">For head hairs, number 1-120</div>
+    <div class="inst">For brow hairs, number 1-30</div>
+    <div class="inst">For face hairs, number 1-84</div>
     <div>
-      <h3><%= area.title %></h3>
-      <span> - <%= area.desc %></span>
+      <%= f.text_field :x, class: "form-control" %>
     </div>
-  <% end %>
-
-</div>
-
-<!-- Head Hairs -->
-<div>
-  <p>head hairs</p>
-  <% @headHairs.each do |h| %>
-  <div><%= h.area %><span class="">Hair #<%= h.id %></span><%= h.x %><%= h.y %><%= h.rotate %></span></div>
-  <% end %>
-</div>
-
-<!-- Brow Hairs -->
-<div>
-  <p>brow hairs</p>
-  <% @browHairs.each do |h| %>
-  <div>
-    <small>Hair #<%= h.id %></small>
-    <span><%= h.x %></span>
-    <span><%= h.y %></span>
-    <span><%= h.rotate %></span>
   </div>
-  <% end %>
-</div>
-
-<!-- Face Hairs -->
-<div>
-  <p>face hairs</p>
-  <% @faceHairs.each do |h| %>
-  <div>
-    <small>Hair #<%= h.id %></small>
-    <span><%= h.x %></span>
-    <span><%= h.y %></span>
-    <span><%= h.rotate %></span>
-  </div>
-  <% end %>
-</div>
-
-<!-- Delete Hairs Button -->
-<h4><b>CREATE A Hair</b></h4>
-<%= link_to 'Shave Billy', hair_destroyer_path, method: :delete, data: {confirm: 'Are you crazy? Billy looks amazing!'} %>
-
-<!-- New Head Hairs Form -->
-<h4><b>CREATE A Hair</b></h4>
-<%= form_for @hair, url: area_hairs_path(:title, "Head") do |f| %>
-<div>
-  x-coordinate:
   <br>
   <div>
-    <%= f.text_field :x, class: "form-control" %>
+    y-coordinate:
+    <div class="inst">Enter number 1-250</div>
+    <%= f.text_field :y, class: "form-control" %>
+  </div>
+  <br>
+  <div>
+    Rotate Hair:
+    <div class="inst">Enter number 1-9</div>
+    <%= f.text_field :rotate, class: "form-control" %>
+  </div>
+  <br>
+  <div>
+    Head, Brow or Face?
+    <br>
+    <%= f.select :area, options_for_select([['Head', "Head"], ['Brow', "Brow"], ['Face', "Face"]]) %>
+
+  </div>
+  <div>
+    <br>
+    <%= f.submit "Grow Hair" %>
+    <br><br>
+  </div>
+  <!-- end of New Head Hairs Form -->
+  <% end %>
+
+<!-- Hair Index -->
+<h2>Here is a list of hairs you've grown:</h2>
+  <!-- Head Hairs -->
+  <div>
+    <p>Head Hairs</p>
+    <% @headHairs.each do |h| %>
+    <div>
+      <small>Hair #<%= h.id %></small>
+      <small class="attributes">x: <%= h.x %>, </small>
+      <small class="attributes">y: <%= h.y %>, </small>
+      <small class="attributes">rotate: <%= h.rotate %></small>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- Brow Hairs -->
+  <div>
+    <p>Brow Hairs</p>
+    <% @browHairs.each do |h| %>
+    <div>
+      <small>Hair #<%= h.id %></small>
+      <small class="attributes">x: <%= h.x %>, </small>
+      <small class="attributes">y: <%= h.y %>, </small>
+      <small class="attributes">rotate: <%= h.rotate %></small>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- Face Hairs -->
+  <div>
+    <p>Face Hairs</p>
+    <% @faceHairs.each do |h| %>
+    <div>
+      <small>Hair #<%= h.id %></small>
+      <small class="attributes">x: <%= h.x %>, </small>
+      <small class="attributes">y: <%= h.y %>, </small>
+      <small class="attributes">rotate: <%= h.rotate %></small>
+    </div>
+    <% end %>
   </div>
 </div>
-<div>
-  y-coordinate:
-  <br>
-  <%= f.text_field :y, class: "form-control" %>
-</div>
-<div>
-  Rotate Hair:
-  <br>
-  <%= f.text_field :rotate, class: "form-control" %>
-</div>
-<div>
-  Head, Brow or Face?
-  <br>
-  <%= f.select :area, options_for_select([['Head', "Head"], ['Brow', "Brow"], ['Face', "Face"]]) %>
 
+<!-- Billy image area -->
+<div class="wrap-billy">
+  <!-- Destroy Hairs Button -->
+  <img src="/assets/images/Billy.png" alt="Wooly-Billy" class="billy-img">
+  <!-- head hairs area -->
+  <div class="wrap-head-hairs">
+    <% @headHairs.each do |h| %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <% end %>
+  </div>
+  <!-- brow hairs area -->
+  <div class="wrap-brow-hairs">
+    <% @browHairs.each do |h| %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <% end %>
+  </div>
+  <!-- face hairs area -->
+  <div class="wrap-face-hairs">
+    <% @faceHairs.each do |h| %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <% end %>
+  </div>
+  <div class="wrap-link">
+    <%= link_to 'Shave Billy', hair_destroyer_path, method: :delete, data: {confirm: 'Are you crazy? Billy looks amazing!'} %>
+  </div>
 </div>
-<div>
-  <br>
-  <%= f.submit "Grow Hair" %>
-  <br><br>
-</div>
-<!-- end of New Head Hairs Form -->
-<% end %>

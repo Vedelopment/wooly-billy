@@ -13,8 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+/*global*/
 body {
   font-family: arial;
+  background-color: rgba(204, 181, 167, .2);
 }
 h1 {
   margin: 10px;
@@ -27,7 +30,85 @@ h1 {
 h3 {
   display: inline;
   font-size: 18px;
+  color: red;
 }
+a, a:visited, input[type="submit"] {
+  margin: 0 auto;
+  background-color: inherit;
+  color: red;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px;
+  border: 1px solid red;
+  border-radius: 4px;
+}
+a:hover {
+  background-color: pink;
+}
+select, input {
+  border: 1px solid rgba(204, 181, 167, .8);
+  border-radius: 4px;
+  background-color: rgb(250,250,180);
+  font-size: 16px;
+}
+
+/*classes*/
 .hide {
   display: none
+}
+.attributes {
+  color: red;
+}
+.wrap-not-billy {
+  display: inline-block;
+  width: calc(50% - 5px);
+}
+.wrap-billy {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+}
+.wrap-link {
+  text-align: center;
+  margin-top: 30px;
+}
+.billy-img {
+  display: block;
+  margin: 10px auto -390px auto;
+  padding: 40px;
+  border: 5px solid rgba(204, 181, 167, .4);
+  background-color: white;
+  border-radius: 14px;
+}
+.wrap-head-hairs {
+  position: relative;
+  /*top: -390px;*/
+  width: 250px;
+  height: 120px;
+  margin: 0 auto;
+  opacity: .4;
+}
+.wrap-brow-hairs {
+  position: relative;
+  /*top: -390px;*/
+  width: 250px;
+  height: 30px;
+  margin: 20px auto 0 auto;
+  opacity: .4;
+}
+.wrap-face-hairs {
+  position: relative;
+  /*top: -390px;*/
+  width: 250px;
+  height: 120px;
+  margin: 84px auto 0 auto;
+  opacity: .4;
+}
+.hair {
+  position: absolute;
+}
+.inst {
+  font-size: 10px;
+  color: red;
 }

@@ -57,7 +57,7 @@ hair_data = [{
   rotate: 0.8,
   growable: Area.third,
 }]
-Hair.create(hair_data)
+# Hair.create(hair_data)
 
 p Area.count
 p Hair.count
