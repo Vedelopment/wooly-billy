@@ -36,6 +36,26 @@ hair_data = [{
   y: 1,
   rotate: 0.8,
   growable: Area.first,
+}, {
+  x: 3,
+  y: 4,
+  rotate: 0.3,
+  growable: Area.second,
+}, {
+  x: 6,
+  y: 1,
+  rotate: 0.8,
+  growable: Area.second,
+}, {
+  x: 3,
+  y: 4,
+  rotate: 0.3,
+  growable: Area.third,
+}, {
+  x: 6,
+  y: 1,
+  rotate: 0.8,
+  growable: Area.third,
 }]
 Hair.create(hair_data)
 

@@ -11,20 +11,102 @@
 </div>
 
 <div>
-  <% @hairs.each do |area| %>
+  <p>Head Hairs</p>
+  <% @headHairs.each do |h| %>
   <div>
-    <h2>Hair #<%= area.id %></h2>
-    <span><%= area.x %></span>
-    <span><%= area.y %></span>
-    <span><%= area.rotate %></span>
+    <small>Hair #<%= h.id %></small>
+    <span><%= h.x %></span>
+    <span><%= h.y %></span>
+    <span><%= h.rotate %></span>
   </div>
   <% end %>
 </div>
 
-<!-- New Assignment Page -->
+<div>
+  <p>Brow Hairs</p>
+  <% @browHairs.each do |h| %>
+  <div>
+    <small>Hair #<%= h.id %></small>
+    <span><%= h.x %></span>
+    <span><%= h.y %></span>
+    <span><%= h.rotate %></span>
+  </div>
+  <% end %>
+</div>
 
+<div>
+  <p>Face Hairs</p>
+  <% @faceHairs.each do |h| %>
+  <div>
+    <small>Hair #<%= h.id %></small>
+    <span><%= h.x %></span>
+    <span><%= h.y %></span>
+    <span><%= h.rotate %></span>
+  </div>
+  <% end %>
+</div>
+
+<!-- Delete Hairs Button -->
+<h4><b>CREATE A Hair</b></h4>
+<%= link_to 'Shave Billy', hair_destroyer_path, method: :delete, confirm: 'Are you crazy? Billy looks amazing!' %>
+
+<!-- New Head Hairs Form -->
 <h4><b>CREATE A Hair</b></h4>
 <%= form_for [@head, @hair], url: area_hairs_path do |f| %>
+<div>
+  x-coordinate:
+  <br>
+  <div>
+    <%= f.text_field :x, class: "form-control" %>
+  </div>
+</div>
+<div>
+  y-coordinate:
+  <br>
+  <%= f.text_field :y, class: "form-control" %>
+</div>
+<div>
+  Rotate Hair:
+  <br>
+  <%= f.text_field :rotate, class: "form-control" %>
+</div>
+<div>
+  <br>
+  <%= f.submit "Grow Hair" %>
+  <br><br>
+</div>
+<% end %>
+
+<!-- New Brow Hairs Form -->
+<h4><b>CREATE A Hair</b></h4>
+<%= form_for [@brow, @hair], url: area_hairs_path do |f| %>
+<div>
+  x-coordinate:
+  <br>
+  <div>
+    <%= f.text_field :x, class: "form-control" %>
+  </div>
+</div>
+<div>
+  y-coordinate:
+  <br>
+  <%= f.text_field :y, class: "form-control" %>
+</div>
+<div>
+  Rotate Hair:
+  <br>
+  <%= f.text_field :rotate, class: "form-control" %>
+</div>
+<div>
+  <br>
+  <%= f.submit "Grow Hair" %>
+  <br><br>
+</div>
+<% end %>
+
+<!-- New Face Hairs Form -->
+<h4><b>CREATE A Hair</b></h4>
+<%= form_for [@face, @hair], url: area_hairs_path do |f| %>
 <div>
   x-coordinate:
   <br>
