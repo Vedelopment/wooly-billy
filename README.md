@@ -14,13 +14,13 @@ Most of the HTML content is generated from database content. There is a handy li
 
 Enjoy!
 
-##Some coding highlights:
+## Some coding highlights:
 
 ### Polymorphic Relationships
 ```
-  class Area < ApplicationRecord
-    has_many :hairs, as: :growable
-  end
+class Area < ApplicationRecord
+  has_many :hairs, as: :growable
+end
 ```
 ```
 class Hair < ApplicationRecord
