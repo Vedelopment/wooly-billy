@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  growable: one
+  growable_type: Growable
+
+two:
+  body: MyText
+  growable: two
+  growable_type: Growable
