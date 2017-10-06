@@ -100,19 +100,19 @@
   <!-- head hairs area -->
   <div class="wrap-head-hairs">
     <% @headHairs.each do |h| %>
-    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.y}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
     <% end %>
   </div>
   <!-- brow hairs area -->
   <div class="wrap-brow-hairs">
     <% @browHairs.each do |h| %>
-    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.y}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
     <% end %>
   </div>
   <!-- face hairs area -->
   <div class="wrap-face-hairs">
     <% @faceHairs.each do |h| %>
-    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.x}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
+    <%= content_tag(:img, "", :src => "/assets/images/hair.png", :class => "hair", :style => "top: #{h.x}px; left: #{h.y}px; transform: rotate(0.#{h.rotate.to_i}turn);") %>
     <% end %>
   </div>
   <div class="wrap-link">
