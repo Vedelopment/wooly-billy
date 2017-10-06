@@ -13,12 +13,7 @@
 <div>
   <p>Head Hairs</p>
   <% @headHairs.each do |h| %>
-  <div>
-    <small>Hair #<%= h.id %></small>
-    <span><%= h.x %></span>
-    <span><%= h.y %></span>
-    <span><%= h.rotate %></span>
-  </div>
+  <div><span class="hide">Hair #<%= h.id %></span><%= h.x %><%= h.y %><%= h.rotate %></span></div>
   <% end %>
 </div>
 
@@ -48,7 +43,7 @@
 
 <!-- Delete Hairs Button -->
 <h4><b>CREATE A Hair</b></h4>
-<%= link_to 'Shave Billy', hair_destroyer_path, method: :delete, confirm: 'Are you crazy? Billy looks amazing!' %>
+<%= link_to 'Shave Billy', hair_destroyer_path, method: :delete, data: {confirm: 'Are you crazy? Billy looks amazing!'} %>
 
 <!-- New Head Hairs Form -->
 <h4><b>CREATE A Hair</b></h4>
@@ -57,7 +52,7 @@
   x-coordinate:
   <br>
   <div>
-    <%= f.text_field :x, class: "form-control" %>
+    <%= f.text_field :x, class: "form-control", :input_html => {:value => "2"} %>
   </div>
 </div>
 <div>

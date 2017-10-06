@@ -21,11 +21,19 @@ class HairsController < ApplicationController
     @brow = Area.second
     @face = Area.third
     if @hair.save
-      puts @hair.hair_params
+      if @head
+      puts hair_params
       @head.hairs << @hair
-      # @brow.hairs << @hair
-      # @face.hairs << @hair
-      flash[:message] = "yup"
+      flash[:message] = "head"
+      end
+      if @brow
+        @brow.hairs << @hair
+        flash[:message] = "brow"
+      end
+      if @face
+        @face.hairs << @hair
+        flash[:message] = "face"
+      end
       redirect_to new_area_hair_path
     else
       flash[:error] =
