@@ -43,7 +43,7 @@ def create
   if @hair.save
     redirect_to new_area_hair_path
   else
-    flash[:error] =
+    flash[:error] = "Failed to save new hair."
     redirect_to new_area_hair_path
   end
 end
