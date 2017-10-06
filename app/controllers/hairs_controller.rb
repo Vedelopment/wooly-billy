@@ -1,8 +1,6 @@
 class HairsController < ApplicationController
 
   def show
-    # @areas = Area.all
-    # @headHairs = Area.first.hairs
   end
 
   def new
@@ -11,29 +9,21 @@ class HairsController < ApplicationController
     @browHairs = Area.second.hairs
     @faceHairs = Area.third.hairs
     @hair = Hair.new
+    @browHair = Hair.new
     @head = Area.first
   end
 
   def create
     @hair = Hair.new(hair_params)
-    @hair.growable = Area.first
-    @head = Area.first
-    @brow = Area.second
-    @face = Area.third
+    if hair_params[:area] == "Head"
+      @hair.growable = Area.first
+    elsif hair_params[:area] == "Brow"
+      @hair.growable = Area.second
+    elsif hair_params[:area] == "Face"
+      @hair.growable = Area.third
+    end
+
     if @hair.save
-      if @head
-      puts hair_params
-      @head.hairs << @hair
-      flash[:message] = "head"
-      end
-      if @brow
-        @brow.hairs << @hair
-        flash[:message] = "brow"
-      end
-      if @face
-        @face.hairs << @hair
-        flash[:message] = "face"
-      end
       redirect_to new_area_hair_path
     else
       flash[:error] =
@@ -49,7 +39,7 @@ class HairsController < ApplicationController
   private
 
   def hair_params
-    params.require(:hair).permit(:x, :y, :rotate)
+    params.require(:hair).permit(:x, :y, :rotate, :area)
   end
 
 end

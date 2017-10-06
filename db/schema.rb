@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005185555) do
+ActiveRecord::Schema.define(version: 20171006160445) do
 
   create_table "areas", force: :cascade do |t|
     t.string "title"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20171005185555) do
     t.decimal "x"
     t.decimal "y"
     t.decimal "rotate"
+    t.string "area"
     t.index ["growable_type", "growable_id"], name: "index_hairs_on_growable_type_and_growable_id"
   end
 

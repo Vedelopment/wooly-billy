@@ -1,24 +1,27 @@
 <div>
-  <h1>Places you can place hair on Wooly Billy:</h1>
+  <h1>Wooly Billy</h1>
+  <h2>Places you can place hair on Wooly Billy:</h2>
 
   <% @areas.each do |area| %>
     <div>
-      <h2><%= area.title %></h2>
-      <span><%= area.desc %></span>
+      <h3><%= area.title %></h3>
+      <span> - <%= area.desc %></span>
     </div>
   <% end %>
 
 </div>
 
+<!-- Head Hairs -->
 <div>
-  <p>Head Hairs</p>
+  <p>head hairs</p>
   <% @headHairs.each do |h| %>
-  <div><span class="hide">Hair #<%= h.id %></span><%= h.x %><%= h.y %><%= h.rotate %></span></div>
+  <div><%= h.area %><span class="">Hair #<%= h.id %></span><%= h.x %><%= h.y %><%= h.rotate %></span></div>
   <% end %>
 </div>
 
+<!-- Brow Hairs -->
 <div>
-  <p>Brow Hairs</p>
+  <p>brow hairs</p>
   <% @browHairs.each do |h| %>
   <div>
     <small>Hair #<%= h.id %></small>
@@ -29,8 +32,9 @@
   <% end %>
 </div>
 
+<!-- Face Hairs -->
 <div>
-  <p>Face Hairs</p>
+  <p>face hairs</p>
   <% @faceHairs.each do |h| %>
   <div>
     <small>Hair #<%= h.id %></small>
@@ -47,34 +51,7 @@
 
 <!-- New Head Hairs Form -->
 <h4><b>CREATE A Hair</b></h4>
-<%= form_for [@head, @hair], url: area_hairs_path do |f| %>
-<div>
-  x-coordinate:
-  <br>
-  <div>
-    <%= f.text_field :x, class: "form-control", :input_html => {:value => "2"} %>
-  </div>
-</div>
-<div>
-  y-coordinate:
-  <br>
-  <%= f.text_field :y, class: "form-control" %>
-</div>
-<div>
-  Rotate Hair:
-  <br>
-  <%= f.text_field :rotate, class: "form-control" %>
-</div>
-<div>
-  <br>
-  <%= f.submit "Grow Hair" %>
-  <br><br>
-</div>
-<% end %>
-
-<!-- New Brow Hairs Form -->
-<h4><b>CREATE A Hair</b></h4>
-<%= form_for [@brow, @hair], url: area_hairs_path do |f| %>
+<%= form_for @hair, url: area_hairs_path(:title, "Head") do |f| %>
 <div>
   x-coordinate:
   <br>
@@ -93,35 +70,15 @@
   <%= f.text_field :rotate, class: "form-control" %>
 </div>
 <div>
+  Head, Brow or Face?
   <br>
-  <%= f.submit "Grow Hair" %>
-  <br><br>
-</div>
-<% end %>
+  <%= f.select :area, options_for_select([['Head', "Head"], ['Brow', "Brow"], ['Face', "Face"]]) %>
 
-<!-- New Face Hairs Form -->
-<h4><b>CREATE A Hair</b></h4>
-<%= form_for [@face, @hair], url: area_hairs_path do |f| %>
-<div>
-  x-coordinate:
-  <br>
-  <div>
-    <%= f.text_field :x, class: "form-control" %>
-  </div>
-</div>
-<div>
-  y-coordinate:
-  <br>
-  <%= f.text_field :y, class: "form-control" %>
-</div>
-<div>
-  Rotate Hair:
-  <br>
-  <%= f.text_field :rotate, class: "form-control" %>
 </div>
 <div>
   <br>
   <%= f.submit "Grow Hair" %>
   <br><br>
 </div>
+<!-- end of New Head Hairs Form -->
 <% end %>

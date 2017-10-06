@@ -13,8 +13,21 @@
  *= require_tree .
  *= require_self
  */
-
-h1 {
+body {
   font-family: arial;
+}
+h1 {
+  margin: 10px;
+  line-height: 70px;
+  font-family: 'Modak', cursive;
+  font-weight: lighter;
+  font-size: 70px;
   color: red;
+}
+h3 {
+  display: inline;
+  font-size: 18px;
+}
+.hide {
+  display: none
 }
