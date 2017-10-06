@@ -4,7 +4,7 @@ This site is a great way to tediously grow hair on Wooly-Billy. It's like watchi
 
 * Please seed the database before creating hairs!
 * Run on localhost:5000
-* Navigate to http://localhost:5000/areas/title/hairs/new
+* Navigate to http://localhost:5000/areas/1/hairs/new
 
 This was built in Rails with "Area" and "Hair" models. The Hair class has a polymorphic database relationship to the Area class through the association of "Growable". A Hair can belong to any three of the seeded Area instances, but it can only belong to one of them.
 
