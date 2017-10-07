@@ -33,11 +33,11 @@ This adds the growable parameter to each hair depending on dropdown menu selecti
 def create
   @hair = Hair.new(hair_params)
   if hair_params[:area] == "Head"
-    @hair.growable = Area.first
+    @hair.growable = Area.find_by(title: "Head")
   elsif hair_params[:area] == "Brow"
-    @hair.growable = Area.second
+    @hair.growable = Area.find_by(title: "Brow Bone")
   elsif hair_params[:area] == "Face"
-    @hair.growable = Area.third
+    @hair.growable = Area.find_by(title: "Face")
   end
 
   if @hair.save
