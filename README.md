@@ -13,6 +13,8 @@ The front end uses embedded ruby to style each created hair using absolute posit
 Most of the HTML content is generated from database content. There is a handy list of hairs you've created at the bottom to help you decide where to place your next hair.
 
 Enjoy!
+## Future:
+add class "Tribble" with has_many :hairs, as: :growable
 
 ## Some coding highlights:
 
